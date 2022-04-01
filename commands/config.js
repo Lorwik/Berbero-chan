@@ -119,13 +119,13 @@ What would you like to edit?
     options: [
       {
         name: "prefix",
-        description: "Check the bot's prefix",
+        description: "Verifique el prefijo del bot",
         type: 1,
         required: false,
         options: [
           {
             name: "symbol",
-            description: "Set the bot's prefix",
+            description: "Establecer el prefijo del bot",
             type: 3,
             required: false,
           },
@@ -133,13 +133,13 @@ What would you like to edit?
       },
       {
         name: "dj",
-        description: "Check the DJ role",
+        description: "Verifique el rol de DJ",
         type: 1,
         required: false,
         options: [
           {
             name: "role",
-            description: "Set the DJ role",
+            description: "Establecer el rol de DJ",
             type: 8,
             required: false,
           },
@@ -171,13 +171,13 @@ What would you like to edit?
           });
           client.sendTime(
             interaction,
-            `The prefix has now been set to \`${prefix}\``
+            `El prefijo ahora se ha establecido en \`${prefix}\``
           );
         } else {
           //has not prefix
           client.sendTime(
             interaction,
-            `The prefix of this server is \`${GuildDB.prefix}\``
+            `El prefijo ahora se ha establecido en \`${GuildDB.prefix}\``
           );
         }
       } else if (config === "djrole") {
@@ -195,7 +195,7 @@ What would you like to edit?
           });
           client.sendTime(
             interaction,
-            `Successfully changed the DJ role of this server to ${role.name}`
+            `Cambió con éxito el rol de DJ de este servidor a ${role.name}`
           );
         } else {
           /**
@@ -204,7 +204,7 @@ What would you like to edit?
           let role = interaction.guild.roles.cache.get(GuildDB.DJ);
           client.sendTime(
             interaction,
-            `The DJ role of this server is ${role.name}`
+            `El rol de DJ de este servidor es ${role.name}`
           );
         }
       }

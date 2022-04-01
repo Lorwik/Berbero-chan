@@ -8,7 +8,7 @@ const levels = {
 };
 module.exports = {
   name: "bassboost",
-  description: "Enables bass boosting audio effect",
+  description: "Habilita el efecto de audio de refuerzo de graves",
   usage: "<none|low|medium|high>",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -27,12 +27,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **No se esta reproduciendo nada...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **¡Debes estar en un canal de voz para usar este comando!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -40,13 +40,13 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        ":x: | **¡Debes estar en el mismo canal de voz que yo para usar este comando!**"
       );
 
     if (!args[0])
       return client.sendTime(
         message.channel,
-        "**Please provide a bassboost level. \nAvailable Levels:** `none`, `low`, `medium`, `high`"
+        "**Proporcione un nivel de refuerzo de graves. \nNiveles Disponibles:** `none`, `low`, `medium`, `high`"
       ); //if the user do not provide args [arguments]
 
     let level = "none";
@@ -61,14 +61,14 @@ module.exports = {
 
     return client.sendTime(
       message.channel,
-      `✅ | **Bassboost level set to** \`${level}\``
+      `✅ | **Nivel de refuerzo de graves ajustado a** \`${level}\``
     );
   },
   SlashCommand: {
     options: [
       {
         name: "level",
-        description: `Please provide a bassboost level. Available Levels: low, medium, high, or none`,
+        description: `Proporcione un nivel de refuerzo de graves. Niveles disponibles: bajo, medio, alto o ninguno`,
         value: "[level]",
         type: 3,
         required: true,
@@ -97,12 +97,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **No se esta reproduciendo nada...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Debe estar en un canal de voz para usar este comando.**"
         );
       if (
         guild.me.voice.channel &&
@@ -110,12 +110,12 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **¡Debes estar en el mismo canal de voz que yo para usar este comando!**"
         );
       if (!args)
         return client.sendTime(
           interaction,
-          "**Please provide a bassboost level. \nAvailable Levels:** `none`, `low`, `medium`, `high`"
+          "**Proporcione un nivel de refuerzo de graves. \nNiveles Disponibles:** `none`, `low`, `medium`, `high`"
         ); //if the user do not provide args [arguments]
 
       let level = "none";
@@ -129,7 +129,7 @@ module.exports = {
 
       return client.sendTime(
         interaction,
-        `✅ | **Set the bassboost level to** \`${level}\``
+        `✅ | **Establezca el nivel de refuerzo de graves en** \`${level}\``
       );
     },
   },

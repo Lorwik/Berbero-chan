@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "disconnect",
-  description: "Stop the music and leave the voice channel",
+  description: "Detén la música y deja el canal de voz.",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -21,14 +21,14 @@ module.exports = {
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel use this command**"
+        "❌ | **Debes estar en un canal de voz usa este comando**"
       );
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **Nada está jugando en este momento...**"
       );
-    await client.sendTime(message.channel, ":notes: | **Disconnected!**");
+    await client.sendTime(message.channel, ":notas: | **Deconectado!**");
     await message.react("✅");
     player.destroy();
   },
@@ -48,7 +48,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Debe estar en un canal de voz para usar este comando.**"
         );
       if (
         guild.me.voice.channel &&
@@ -56,17 +56,17 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          `❌ | **You must be in ${guild.me.voice.channel} to use this command.**`
+          `❌ | **Debes esta en ${guild.me.voice.channel} para usar este comando.**`
         );
 
       let player = await client.Manager.get(interaction.guild_id);
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **No se esta reproduciendo nada ahora...**"
         );
       player.destroy();
-      client.sendTime(interaction, ":notes: | **Disconnected!**");
+      client.sendTime(interaction, ":notas: | **Desconectado!**");
     },
   },
 };

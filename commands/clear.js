@@ -21,18 +21,18 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **No se esta reproduciendo nada ahora...**"
       );
 
     if (!player.queue || !player.queue.length || player.queue.length === 0)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **No se esta reproduciendo nada ahora...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to play something!**"
+        "❌ | **¡Debes estar en un canal de voz para reproducir algo!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -40,10 +40,10 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        ":x: | **¡Debes estar en el mismo canal de voz que yo para usar este comando!**"
       );
     player.queue.clear();
-    await client.sendTime(message.channel, "✅ | **Cleared the queue!**");
+    await client.sendTime(message.channel, "✅ | **Se limpio la cola!**");
   },
 
   SlashCommand: {
@@ -60,7 +60,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | You must be in a voice channel to use this command."
+          "❌ | Debe estar en un canal de voz para usar este comando."
         );
       if (
         guild.me.voice.channel &&
@@ -68,22 +68,22 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **¡Debes estar en el mismo canal de voz que yo para usar este comando!**"
         );
       let player = await client.Manager.get(interaction.guild_id);
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **No se esta reproduciendo nada ahora...**"
         );
 
       if (!player.queue || !player.queue.length || player.queue.length === 0)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **No se esta reproduciendo nada ahora...**"
         );
       player.queue.clear();
-      await client.sendTime(interaction, "✅ | **Cleared the queue!**");
+      await client.sendTime(interaction, "✅ | **Se limpio la cola!**");
     },
   },
 };
