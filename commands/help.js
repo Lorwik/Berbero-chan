@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "help",
-  description: "Information about the bot",
+  description: "Información sobre el bot",
   usage: "[command]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -26,20 +26,18 @@ module.exports = {
 
     let Embed = new MessageEmbed()
       .setAuthor(
-        `Commands of ${client.user.username}`,
+        `Comandos de ${client.user.username}`,
         client.botconfig.IconURL
       )
       .setColor(client.botconfig.EmbedColor)
       .setFooter(
-        `To get info of each command type ${
+        `Para obtener información de cada tipo de comando ${
           GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
-        }help [Command] | Have a nice day!`
+        }help [Command]`
       ).setDescription(`${Commands.join("\n")}
   
-  Discord Music Bot Version: v${require("../package.json").version}
-  [✨ Support Server](${
-    client.botconfig.SupportServer
-  }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | [Dashboard](${client.botconfig.Website}) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
+  Bot Versión: v${require("../package.json").version}
+  [✨ Servidor de soporte](${client.botconfig.SupportServer})`);
     if (!args[0]) message.channel.send(Embed);
     else {
       let cmd =
@@ -48,11 +46,11 @@ module.exports = {
       if (!cmd)
         return client.sendTime(
           message.channel,
-          `❌ | Unable to find that command.`
+          `❌ | No se puede encontrar ese comando.`
         );
 
       let embed = new MessageEmbed()
-        .setAuthor(`Command: ${cmd.name}`, client.botconfig.IconURL)
+        .setAuthor(`Comando: ${cmd.name}`, client.botconfig.IconURL)
         .setDescription(cmd.description)
         .setColor("GREEN")
         //.addField("Name", cmd.name, true)
@@ -65,15 +63,15 @@ module.exports = {
           true
         )
         .addField(
-          "Permissions",
-          "Member: " +
+          "Permisoss",
+          "Miembro: " +
             cmd.permissions.member.join(", ") +
             "\nBot: " +
             cmd.permissions.channel.join(", "),
           true
         )
         .setFooter(
-          `Prefix - ${
+          `Prefijo - ${
             GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
           }`
         );
@@ -85,8 +83,8 @@ module.exports = {
   SlashCommand: {
     options: [
       {
-        name: "command",
-        description: "Get information on a specific command",
+        name: "comando",
+        description: "Obtener información sobre un comando específico",
         value: "command",
         type: 3,
         required: false,
@@ -110,20 +108,18 @@ module.exports = {
 
       let Embed = new MessageEmbed()
         .setAuthor(
-          `Commands of ${client.user.username}`,
+          `Comandos para ${client.user.username}`,
           client.botconfig.IconURL
         )
         .setColor(client.botconfig.EmbedColor)
         .setFooter(
-          `To get info of each command type ${
+          `Para obtener información de cada tipo de comando ${
             GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
-          }help [Command] | Have a nice day!`
+          }help [Command]`
         ).setDescription(`${Commands.join("\n")}
   
-  Discord Music Bot Version: v${require("../package.json").version}
-  [✨ Support Server](${
-    client.botconfig.SupportServer
-  }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | [Dashboard](${client.botconfig.Website}) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
+  Bot Versión: v${require("../package.json").version}
+  [✨ Soporte Server](${client.botconfig.SupportServer})`);
       if (!args) return interaction.send(Embed);
       else {
         let cmd =
@@ -134,7 +130,7 @@ module.exports = {
         if (!cmd)
           return client.sendTime(
             interaction,
-            `❌ | Unable to find that command.`
+            `❌ | No se puede encontrar ese comando.`
           );
 
         let embed = new MessageEmbed()
@@ -142,24 +138,24 @@ module.exports = {
           .setDescription(cmd.description)
           .setColor("GREEN")
           //.addField("Name", cmd.name, true)
-          .addField("Aliases", cmd.aliases.join(", "), true)
+          .addField("Alias", cmd.aliases.join(", "), true)
           .addField(
-            "Usage",
+            "Uso",
             `\`${GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix}${
               cmd.name
             }\`${cmd.usage ? " " + cmd.usage : ""}`,
             true
           )
           .addField(
-            "Permissions",
-            "Member: " +
+            "Permisos",
+            "Miembro: " +
               cmd.permissions.member.join(", ") +
               "\nBot: " +
               cmd.permissions.channel.join(", "),
             true
           )
           .setFooter(
-            `Prefix - ${
+            `Prefijo - ${
               GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
             }`
           );
