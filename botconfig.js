@@ -24,8 +24,8 @@ module.exports = {
 
   Presence: {
     status: "online", // You can show online, idle, and dnd
-    name: "Music", // The message shown
-    type: "LISTENING", // PLAYING, WATCHING, LISTENING, STREAMING
+    name: "Desarrollado por LwK", // The message shown
+    type: "PLAYING", // PLAYING, WATCHING, LISTENING, STREAMING
   },
 
   // Lavalink server; public lavalink -> https://lavalink-list.darrennathanael.com/; create one yourself -> https://darrennathanael.com/post/how-to-lavalink/
