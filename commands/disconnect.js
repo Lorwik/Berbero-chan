@@ -28,7 +28,7 @@ module.exports = {
         message.channel,
         "❌ | **Nada está jugando en este momento...**"
       );
-    await client.sendTime(message.channel, ":notas: | **Deconectado!**");
+    await client.sendTime(message.channel, ":notes: | **Deconectado!**");
     await message.react("✅");
     player.destroy();
   },
@@ -66,7 +66,7 @@ module.exports = {
           "❌ | **No se esta reproduciendo nada ahora...**"
         );
       player.destroy();
-      client.sendTime(interaction, ":notas: | **Desconectado!**");
+      client.sendTime(interaction, ":notes: | **Desconectado!**");
     },
   },
 };

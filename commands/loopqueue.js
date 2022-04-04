@@ -3,7 +3,7 @@ const { TrackUtils } = require("erela.js");
 
 module.exports = {
   name: "loopqueue",
-  description: "Loop the whole queue",
+  description: "Bucle de toda la cola",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -22,12 +22,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **No se esta reproduciendo nada ahora...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **Debes estar en un canal de voz para usar este comando!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -35,15 +35,15 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        ":x: | **Debes estar en el mismo canal de voz que yo para usar este comando!**"
       );
 
     if (player.queueRepeat) {
       player.setQueueRepeat(false);
-      client.sendTime(message.channel, `:repeat: Queue Loop \`disabled\``);
+      client.sendTime(message.channel, `:repeat: Bucle de cola \`disabled\``);
     } else {
       player.setQueueRepeat(true);
-      client.sendTime(message.channel, `:repeat: Queue Loop \`enabled\``);
+      client.sendTime(message.channel, `:repeat: Bucle de cola \`enabled\``);
     }
   },
   SlashCommand: {
@@ -63,12 +63,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **No se esta reproduciendo nada ahora...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **Debes estar en un canal de voz para usar este comando!**"
         );
       if (
         guild.me.voice.channel &&
@@ -76,15 +76,15 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Debes estar en el mismo canal de voz que yo para usar este comando!**"
         );
 
       if (player.queueRepeat) {
         player.setQueueRepeat(false);
-        client.sendTime(interaction, `:repeat: **Queue Loop** \`disabled\``);
+        client.sendTime(interaction, `:repeat: **Bucle de cola** \`disabled\``);
       } else {
         player.setQueueRepeat(true);
-        client.sendTime(interaction, `:repeat: **Queue Loop** \`enabled\``);
+        client.sendTime(interaction, `:repeat: **Bucle de cola** \`enabled\``);
       }
       console.log(interaction.data);
     },
