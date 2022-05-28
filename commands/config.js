@@ -23,10 +23,10 @@ module.exports = {
       .addField("Prefix", GuildDB.prefix, true)
       .addField("DJ Role", GuildDB.DJ ? `<@&${GuildDB.DJ}>` : "Not Set", true)
       .setDescription(`
-What would you like to edit?
+¿Qué te gustaría editar?
 
-:one: - Server Prefix
-:two: - DJ Role
+:one: - Prefijo del servidor
+:two: - Rol DJ
 `);
 
     let ConfigMessage = await message.channel.send(Config);
@@ -41,7 +41,7 @@ What would you like to edit?
       ConfigMessage.reactions.removeAll();
       client.sendTime(
         message.channel,
-        "❌ | **You took too long to respond. If you want to edit the settings, run the command again!**"
+        "❌ | **Tardaste demasiado en responder. Si desea editar la configuración, ejecute el comando nuevamente.**"
       );
       ConfigMessage.delete(Config);
     });
@@ -58,7 +58,7 @@ What would you like to edit?
     if (em._emoji.name === "1️⃣") {
       await client.sendTime(
         message.channel,
-        "What do you want to change the prefix to?"
+        "¿A qué quieres cambiar el prefijo?"
       );
       let prefix = await message.channel.awaitMessages(
         (msg) => msg.author.id === message.author.id,
@@ -67,7 +67,7 @@ What would you like to edit?
       if (!prefix.first())
         return client.sendTime(
           message.channel,
-          "You took too long to respond."
+          "Tardaste demasiado en responder."
         );
       prefix = prefix.first();
       prefix = prefix.content;
@@ -79,12 +79,12 @@ What would you like to edit?
 
       client.sendTime(
         message.channel,
-        `Successfully saved guild prefix as \`${prefix}\``
+        `Prefijo de gremio guardado con éxito como \`${prefix}\``
       );
     } else {
       await client.sendTime(
         message.channel,
-        "Please mention the role you want `DJ's` to have."
+        "Por favor menciona el rol que quieres que tenga el `DJ's`"
       );
       let role = await message.channel.awaitMessages(
         (msg) => msg.author.id === message.author.id,
@@ -93,13 +93,13 @@ What would you like to edit?
       if (!role.first())
         return client.sendTime(
           message.channel,
-          "You took too long to respond."
+          "Tardaste demasiado en responder."
         );
       role = role.first();
       if (!role.mentions.roles.first())
         return client.sendTime(
           message.channel,
-          "Please mention the role that you want for DJ's only."
+          "Mencione el rol que desea para DJ's solamente."
         );
       role = role.mentions.roles.first();
 
@@ -110,7 +110,7 @@ What would you like to edit?
 
       client.sendTime(
         message.channel,
-        "Successfully saved DJ role as <@&" + role.id + ">"
+        "Rol de DJ guardado con éxito como <@&" + role.id + ">"
       );
     }
   },

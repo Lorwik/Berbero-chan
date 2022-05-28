@@ -3,7 +3,7 @@ const { TrackUtils } = require("erela.js");
 
 module.exports = {
   name: "remove",
-  description: `Remove a song from the queue`,
+  description: `eliminar una cancion de la cola`,
   usage: "[number]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -24,12 +24,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **No se esta reproduciendo nada ahora...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **¡Debes estar en un canal de voz para utilizar el comando!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -37,22 +37,22 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        ":x: | **¡Debes estar en un canal de voz para utilizar el comando!**"
       );
 
     if (!player.queue || !player.queue.length || player.queue.length === 0)
-      return message.channel.send("There is nothing in the queue to remove");
+      return message.channel.send("No hay nada en la cola para eliminar");
     let rm = new MessageEmbed()
       .setDescription(
-        `✅ **|** Removed track **\`${Number(args[0])}\`** from the queue!`
+        `✅ **|** Pista eliminada **\`${Number(args[0])}\`** de la cola!`
       )
       .setColor("GREEN");
     if (isNaN(args[0]))
       rm.setDescription(
-        `**Usage - **${client.botconfig.prefix}\`remove [track]\``
+        `**Uso - **${client.botconfig.prefix}\`elimina [track]\``
       );
     if (args[0] > player.queue.length)
-      rm.setDescription(`The queue has only ${player.queue.length} songs!`);
+      rm.setDescription(`La cola solo tiene ${player.queue.length} canciones!`);
     await message.channel.send(rm);
     player.queue.remove(Number(args[0]) - 1);
   },
@@ -64,7 +64,7 @@ module.exports = {
         value: "[track]",
         type: 4,
         required: true,
-        description: "Remove a song from the queue",
+        description: "Eliminar una canción de la cola",
       },
     ],
     /**
@@ -82,12 +82,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **No se esta reproduciendo nada ahora...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **¡Debes estar en el mismo canal de voz que yo para usar este comando!**"
         );
       if (
         guild.me.voice.channel &&
@@ -95,11 +95,13 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **¡Debes estar en el mismo canal de voz que yo para usar este comando!**"
         );
 
       if (!player.queue || !player.queue.length || player.queue.length === 0)
-        return client.sendTime("❌ | **Nothing is playing right now...**");
+        return client.sendTime(
+          "❌ | **No se esta reproduciendo nada ahora...**"
+        );
       let rm = new MessageEmbed()
         .setDescription(
           `✅ | **Removed track** \`${Number(args[0])}\` from the queue!`
